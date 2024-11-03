@@ -3,11 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom';
+import FinancialInformation from './Components/FinancialInformation';
+import Home from './Components/Home';
+import ShowCIBILScore from './Components/ShowCIBILScore';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const router=createBrowserRouter(
+ createRoutesFromElements(
+    <Route path="/" element={<App/>}>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/financial" element={<FinancialInformation/>}/>
+      <Route path='/show-cibil-score' element={<ShowCIBILScore/>}/>
+    </Route>
+ )
+)
+
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/> 
   </React.StrictMode>
 );
 
